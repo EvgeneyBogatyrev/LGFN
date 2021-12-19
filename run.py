@@ -1,5 +1,7 @@
 import os
 
+os.system("chmod -R 0777 /model")
+
 with open('/model/config.sh', 'w') as g:
     g.write('cd /model\n')
     g.write('./LGFN.sh\n')
