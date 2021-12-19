@@ -45,24 +45,30 @@ def main():
 
             checkpoint.done()
 
+done = False
+while not done:
+    if __name__ == '__main__':
+        #time_write_dir = os.path.join(args.save_dir, 'LGFN')
+        if args.video_name not in args.dir_demo:
+            args.dir_demo = os.path.join(args.dir_demo, args.video_name)
 
-if __name__ == '__main__':
-    time_write_dir = os.path.join(args.save_dir, 'LGFN')
-    args.dir_demo = os.path.join(args.dir_demo, args.video_name)
+        args.n_GPUs = 1
 
-    args.save_dir = os.path.join(args.save_dir, 'LGFN')
-    if not os.path.exists(args.save_dir):
-        os.mkdir(args.save_dir)
-    args.save_dir = os.path.join(args.save_dir, args.video_name)
-    if not os.path.exists(args.save_dir):
-        os.mkdir(args.save_dir)
+        #args.save_dir = os.path.join(args.save_dir, 'LGFN')
+        if not os.path.exists(args.save_dir):
+            os.mkdir(args.save_dir)
+        #args.save_dir = os.path.join(args.save_dir, args.video_name)
+        if not os.path.exists(args.save_dir):
+            os.mkdir(args.save_dir)
 
-    with open(os.path.join(time_write_dir , 'LGFN.txt'), 'a') as f:
-        f.write('OK ' + args.video_name + '\n')
-    begin = time.time()
+        #with open(os.path.join(time_write_dir , 'LGFN.txt'), 'a') as f:
+        #    f.write('OK ' + args.video_name + '\n')
+        #begin = time.time()
 
-    main()
+        main()
 
-    end = time.time()
-    with open(os.path.join(time_write_dir , 'LGFN.txt'), 'a') as f:
-        f.write('Full time on {}: {}\n'.format(args.video_name, end - begin))
+            #end = time.time()
+            #with open(os.path.join(time_write_dir , 'LGFN.txt'), 'a') as f:
+            #    f.write('Full time on {}: {}\n'.format(args.video_name, end - begin))
+        done = True
+    

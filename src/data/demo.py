@@ -32,6 +32,7 @@ class Demo(data.Dataset):
         index = idx + 1
         filename = os.path.splitext(os.path.basename(self.filelist[index]))[0]
 
+
         frames_lr = []
         for i in range(index - self.n_frames // 2, index + self.n_frames // 2 + 1):
             if i < 0:
