@@ -1,7 +1,7 @@
 import os
 
 os.system("chmod -R 0777 /model")
-
+'''
 with open('/model/config.sh', 'w') as g:
     g.write('cd /model\n')
     g.write("chmod 0777 LGFN.sh\n")
@@ -9,9 +9,12 @@ with open('/model/config.sh', 'w') as g:
 
 os.system('chmod 0777 /model/config.sh')
 os.system('/model/config.sh')
-
+'''
 with open('/model/run.sh', 'w') as f:
-    f.write("mkdir result\n")
+    f.write("mkdir /model/result\n")
+
+    f.write('cd /model/src/Deform_Conv\n')
+    f.write('python setup.py build install\n')
     
     vids = os.listdir("/dataset")
 
@@ -21,4 +24,4 @@ with open('/model/run.sh', 'w') as f:
     f.write("chmod -R 0777 /model\n")
     
 os.system('chmod 0777 /model/run.sh')
-os.system('/model/run.sh')
+os.system('sh /model/run.sh')
