@@ -9,9 +9,15 @@ from option import args
 from trainer import Trainer
 
 import os
+from datetime import datetime
 
 torch.manual_seed(args.seed)
 checkpoint = utility.checkpoint(args)
+
+
+def write_time(text):
+    with open('/model/time.txt', 'a') as f:
+        f.write(text + str(datetime.now()) + "\n")
 
 def print_network(net):
     num_params = 0
@@ -49,6 +55,7 @@ done = False
 while not done:
     if __name__ == '__main__':
         #time_write_dir = os.path.join(args.save_dir, 'LGFN')
+        write_time('Begin: ')
         if args.video_name not in args.dir_demo:
             args.dir_demo = os.path.join(args.dir_demo, args.video_name)
 
@@ -71,4 +78,5 @@ while not done:
             #with open(os.path.join(time_write_dir , 'LGFN.txt'), 'a') as f:
             #    f.write('Full time on {}: {}\n'.format(args.video_name, end - begin))
         done = True
+        write_time("End:")
     
